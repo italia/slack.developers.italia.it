@@ -1,0 +1,22 @@
+on:
+  workflow_dispatch:
+    inputs:
+      token:
+        description: "Slack token"
+        required: true
+        type: string
+
+jobs:
+  update-token:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          sed "s|\(https://join.slack.com/t/developersitalia/shared_invite/\)[a-zA-Z0-9_-]*|\1$TOKEN|" -i index.html
+        env:
+          TOKEN: ${{ inputs.token }}
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore: update Slack token"
