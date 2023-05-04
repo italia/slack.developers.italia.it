@@ -21,12 +21,12 @@ jobs:
             <head>
               <meta charset="utf-8">
               <title>Redirect a Slack Developers Italia</title>
-              <meta http-equiv="refresh" content="0; URL=https://join.slack.com/t/developersitalia/shared_invite/$TOKEN">
+              <meta http-equiv="refresh" content="0; URL=$INVITE_URL">
             </head>
           </html>
           EOF
         env:
-          TOKEN: ${{ inputs.token }}
+          INVITE_URL: ${{ inputs.token }}
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "chore: update Slack token"
