@@ -2,7 +2,7 @@ on:
   workflow_dispatch:
     inputs:
       token:
-        description: "Slack token"
+        description: "Slack invite URL"
         required: true
         type: string
 
