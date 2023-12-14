@@ -1,7 +1,7 @@
 on:
   workflow_dispatch:
     inputs:
-      token:
+      slack_invite_url:
         description: "Slack invite URL"
         required: true
         type: string
@@ -13,6 +13,21 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v3
+      
+      # Mask the invite URL so it doesn't get printed in the logs.
+      # This adds a layer of protection in case we run the workflow with
+      # a private invite URL by mistake.
+      - run: |
+          url=$(jq -r '.inputs.slack_invite_url' $GITHUB_EVENT_PATH)
+          echo ::add-mask::$url
+          echo SLACK_INVITE_URL="$url" >> $GITHUB_ENV
+      
+      - run: >
+          echo $SLACK_INVITE_URL 
+          | grep -E 'https://join\.slack\.com/t/developersitalia/shared_invite/zt-[A-Za-z0-9-]+' > /dev/null 
+          || (echo "::error::Input invite URL doesn't look like an invite to Developers Italia's Slack"; exit 1)
+    
+        
       - run: |
           cat << EOF > index.html
           <!DOCTYPE html>
@@ -21,12 +36,11 @@ jobs:
             <head>
               <meta charset="utf-8">
               <title>Redirect a Slack Developers Italia</title>
-              <meta http-equiv="refresh" content="0; URL=$INVITE_URL">
+              <meta http-equiv="refresh" content="0; URL=$SLACK_INVITE_URL">
             </head>
           </html>
           EOF
-        env:
-          INVITE_URL: ${{ inputs.token }}
+
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "chore: update Slack token"
