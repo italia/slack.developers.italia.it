@@ -19,7 +19,7 @@ jobs:
       # a private invite URL by mistake.
       - run: |
           url=$(jq -r '.inputs.slack_invite_url' $GITHUB_EVENT_PATH)
-          echo ::add-mask::$url
+          echo "::add-mask::$url"
           echo SLACK_INVITE_URL="$url" >> $GITHUB_ENV
       
       - run: >
