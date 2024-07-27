@@ -1,0 +1,87 @@
+body {
+    font-family: 'Titillium Web', sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('fonts/TitilliumSansPro-Regular.woff2') format('woff2'),
+         url('/fonts/TitilliumSansPro-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('fonts/TitilliumSansPro-Bold.woff2') format('woff2'),
+         url('fonts/TitilliumSansPro-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('fonts/TitilliumSansPro-Italic.woff2') format('woff2'),
+         url('fonts/TitilliumSansPro-Italic.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+p.info {
+    margin-top: 20px;
+    font-style: italic;
+    color: #555;
+}
+
+.choices {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.choice {
+    width: 45%;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    background: #fff;
+    text-align: center;
+}
+
+.choice a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.choice img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.choice h2 {
+    margin-top: 10px;
+}
+
+.choice p {
+    color: #666;
+    font-size: 0.9em;
+}
+
+
