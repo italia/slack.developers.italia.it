@@ -16,7 +16,7 @@
         <p>Select the platform you prefer to join our community:</p>
         <div class="choices">
             <div class="choice">
-                <a href="YOUR_SLACK_INVITE_URL" class="slack">
+                <a href="SLACK_INVITE_URL" class="slack">
                     <img src="img/slack-logo.webp" alt="Slack Logo">
                     <h2>Slack</h2>
                 </a>
