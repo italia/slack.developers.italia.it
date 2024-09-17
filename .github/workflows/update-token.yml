@@ -12,7 +12,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Mask the invite URL so it doesn't get printed in the logs.
       # This adds a layer of protection in case we run the workflow with
@@ -30,6 +30,6 @@ jobs:
       - run: |
           sed "s@SLACK_INVITE_URL@$SLACK_INVITE_URL@g" < index.tpl > index.html
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update Slack token"
